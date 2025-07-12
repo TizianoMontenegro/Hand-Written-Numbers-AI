@@ -1,19 +1,8 @@
+from app import app
 
 
 def main():
-    ...
-
-
-def function_1():
-    ...
-
-
-def function_2():
-    ...
-
-
-def function_n():
-    ...
+    app.run(debug=True)
 
 
 if __name__ == "__main__":
