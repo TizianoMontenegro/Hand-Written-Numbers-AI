@@ -2,11 +2,12 @@ from flask import Flask, request, jsonify, render_template
 import numpy as np
 import base64
 # from tensorflow.python.keras import models
-from keras import models
+from tf_keras import models
 import cv2
 
 app = Flask(__name__)
-model = models.load_model("model.h5")  # Load saved model
+# model = models.load_model("model.h5")  # Load saved model
+model = models.load_model("model.keras")  # Load saved keras model
 
 @app.route("/")
 def home():
