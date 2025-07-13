@@ -1,78 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:description" content="A web application that can predict hand written or drew numbers by using an AI model for predict numbers.">
-    <meta property="og:title" content="Digit Recognizer">
-    <title>Digit Recognizer</title>
-    <style>
-        canvas { border: 1px solid black; }
-    </style>
-</head>
-<body>
-    <h1>Draw a Digit</h1>
-    <canvas id="canvas" width="580" height="580"></canvas>
-    <br>
-    <button onclick="predict()">Predict</button>
-    <button onclick="clearCanvas()">Clear</button>
-    <h2>Prediction: <span id="result">None</span></h2>
-
-    <script>
-        const canvas = document.getElementById("canvas");
-        const ctx = canvas.getContext("2d");
-        let drawing = false;
-        
-        // Initialize canvas with white background
-        ctx.fillStyle = "white";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeStyle = "black";
-        ctx.lineWidth = 20;
-        ctx.lineCap = "round";
-
-        canvas.addEventListener("mousedown", startDrawing);
-        canvas.addEventListener("mouseup", stopDrawing);
-        canvas.addEventListener("mousemove", draw);
-        canvas.addEventListener("mouseout", stopDrawing);
-
-        function startDrawing(e) {
-            drawing = true;
-            draw(e);  // Start drawing immediately
-        }
-
-        function stopDrawing() {
-            drawing = false;
-            ctx.beginPath();  // Start new path for next stroke
-        }
-
-        function draw(e) {
-            if (!drawing) return;
-            
-            ctx.lineTo(e.offsetX, e.offsetY);
-            ctx.stroke();
-            ctx.beginPath();
-            ctx.moveTo(e.offsetX, e.offsetY);
-        }
-
-        function clearCanvas() {
-            ctx.fillStyle = "white";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.beginPath();
-            document.getElementById("result").textContent = "None";
-        }
-
-        
-        async function predict() {
-            const dataURL = canvas.toDataURL("image/png");  // Convert canvas to base64
-            const response = await fetch("/predict", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ image: dataURL })
-            });
-            const result = await response.json();
-            document.getElementById("result").textContent = result.digit;
-        }
-    </script>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:description" content="A web application that can predict hand written or drew numbers by using an AI model for predict numbers.">
+        <meta property="og:title" content="Digit Recognizer">
+        <title>Digit Recognizer</title>
+        <link rel="stylesheet" href="../static/style.css">
+        <script defer type="module" src="../static/canvasDraw.js"></script>
+    </head>
+    <body>
+        <h1>Draw a Digit</h1>
+        <canvas id="canvas" width="580" height="580"></canvas>
+        <br>
+        <button id="predictButton">Predict</button>
+        <button id="clearCanvasButton">Clear</button>
+        <h2>Prediction: <span id="result">None</span></h2>
+    </body>
 </html>
