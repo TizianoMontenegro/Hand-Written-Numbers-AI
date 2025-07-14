@@ -7,15 +7,46 @@
         <meta property="og:description" content="A web application that can predict hand written or drew numbers by using an AI model for predict numbers.">
         <meta property="og:title" content="Digit Recognizer">
         <title>Digit Recognizer</title>
-        <link rel="stylesheet" href="../static/style.css">
-        <script defer type="module" src="../static/canvasDraw.js"></script>
+        <link rel="stylesheet" href="/static/style.css">
+        <script defer type="module" src="/static/canvasDraw.js"></script>
     </head>
     <body>
-        <h1>Draw a Digit</h1>
-        <canvas id="canvas" width="580" height="580"></canvas>
-        <br>
-        <button id="predictButton">Predict</button>
-        <button id="clearCanvasButton">Clear</button>
-        <h2>Prediction: <span id="result">None</span></h2>
+        <div class="wrapper">
+            
+            <header class="header">
+                <!-- <span class="header__slogan">DigitRecognizer</span> -->
+                <span class="header__slogan"><a href="#">DRECOGNIZER</a></span>
+
+                <nav class="header__nav">
+                    <ul class="header__ul">
+                        <li><a href="#">Home</a></li> <!-- change href to "#home" if not working -->
+                        <li><a href="#draw" class="explosure">Draw</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <section id="home" class="home">
+                <div class="home__shadow"></div>
+                <h2 class="home__title">Grow up you Precision</h2>
+                <p class="home__desc">Here you can prove yourself how good you can write numbers and how legible they are.</p>
+                <a class="home__button" href="#draw">Test Your Might</a>
+                <!-- <a class="home__button" href="#draw"><button>Test Your Might</button></a> -->
+                <article class="home__image">
+                    <!-- <img src="" alt=""> -->
+                </article>
+            </section>
+
+            <main id="draw" class="draw">
+                <h1>Draw a Digit</h1>
+                <p>Draw a number digit from 0 to 9 on the canvas in the right side.</p>
+                <canvas id="canvas" width="580" height="580"></canvas>
+                <br>
+                <button id="predictButton">Predict</button>
+                <button id="clearCanvasButton">Clear</button>
+                <h2>Prediction: <span id="result">None</span></h2>
+            </main>
+
+        </div>
     </body>
 </html>
