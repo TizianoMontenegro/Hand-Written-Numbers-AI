@@ -38,13 +38,33 @@
             </section>
 
             <main id="draw" class="draw">
-                <h1>Draw a Digit</h1>
-                <p>Draw a number digit from 0 to 9 on the canvas in the right side.</p>
-                <canvas id="canvas" width="580" height="580"></canvas>
-                <br>
-                <button id="predictButton">Predict</button>
-                <button id="clearCanvasButton">Clear</button>
-                <h2>Prediction: <span id="result">None</span></h2>
+                <div class="draw__container">
+
+                    <h1 class="draw__title">Draw a Digit</h1>
+                    <p class="draw__desc">Draw on the white box a number digit from 0 to 9 on the canvas in the right side.</p>
+
+                    <div class="draw__nums">
+                        <span>0</span>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                    </div>
+                    
+                    <!-- <canvas class="draw__canvas" id="canvas"></canvas> -->
+
+                    <canvas class="draw__canvas" id="canvas" width="350" height="350"></canvas>
+
+                    <button class="button draw__predict-button" id="predictButton">Predict</button>
+                    <button class="button draw__clear-button" id="clearCanvasButton">Clear</button>
+                    <h2 class="draw__prediction">Prediction: <span id="result">None</span></h2>
+
+                </div>
             </main>
 
         </div>
